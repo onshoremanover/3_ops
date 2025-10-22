@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz</title>
+    <link rel="icon" href="{{ url_for('static', filename='icons8-favicon-16.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script defer src="https://umami.publio.online/script.js" data-website-id="62984ae7-0b80-4848-90d4-28f0c17dadce"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .correct-answer {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Question {{ question_number }}: {{ question.question }}</h2>
+    <form action="/question" method="post">
+        {% for choice in question.choices %}
+        <div>
+            <label>
+                <input type="checkbox" name="answer" value="{{ loop.index0 | string }}" style="vertical-align: middle;">
+                {{ choice }}
+            </label>
+        </div>
+        {% endfor %}
+
+        <br>
+        {% if show_answer %}
+        <div class="correct-answer">
+            Correct answer(s): {{ previous_correct_answer|join(", ") }}
+        </div>
+        <input type="submit" value="Next Question">
+        {% else %}
+        <input type="submit" value="Submit">
+        {% endif %}
+    </form>
+</body>
+
+</html>

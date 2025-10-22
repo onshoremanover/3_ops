@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Answer</title>
+    <link rel="icon" href="{{ url_for('static', filename='icons8-favicon-16.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://umami.publio.online/script.js" data-website-id="62984ae7-0b80-4848-90d4-28f0c17dadce"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        p, ul {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding-left: 30px;  /* Add this line */
+        }
+
+        a {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Question {{ question_number }}</h1>
+    
+    <p>Your Answer:</p>
+    <ul>
+        {% for answer in user_answer.split(', ') %}
+            <li>{{ answer }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Correct Answer:</p>
+    <ul>
+        {% for answer in previous_correct_answer.split(', ') %}
+            <li>{{ answer }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Explanation:</p>
+    <ul>
+    {% if explanation %}
+        <li>{{ explanation }}</li>
+    {% endif %}
+    </ul>
+
+    {% if show_results_button %}
+        <!-- If the condition is met, show the "Continue to Results" button -->
+        <a href="{{ url_for('results') }}" class="btn btn-primary">Continue to Results</a>
+    {% else %}
+        <!-- Otherwise, keep showing the "Next Question" link -->
+        <a href="{{ url_for('question') }}" id="nextQuestion">Next Question</a>
+    {% endif %}
+
+    <script>
+        window.onload = function() {
+            // Focus the relevant button or link based on the condition
+            if ({{ show_results_button | tojson }}) {
+                document.querySelector('.btn-primary').focus();
+            } else {
+                document.getElementById('nextQuestion').focus();
+            }
+        };
+    </script>
+    
+</body>
+
+</html>
