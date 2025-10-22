@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: velo 
+  namespace: velo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod # Use the same cluster issuer as oceanrace
+spec:
+  ingressClassName: public # Replace 'public' with the ingress class name in your cluster
+  rules:
+  - host: velo.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: velo
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - velo.publio.online
+    secretName: velo-tls
+

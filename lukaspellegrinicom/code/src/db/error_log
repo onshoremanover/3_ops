@@ -1,0 +1,375 @@
+[24-Sep-2021 11:20:03 Europe/Zurich] PHP Notice:  Undefined index: gender in /home/lukaspe1/public_html/db/2form.php on line 17
+[24-Sep-2021 11:26:34 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/2form.php on line 47
+[24-Sep-2021 11:26:34 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/2form.php on line 51
+[24-Sep-2021 11:43:47 Europe/Zurich] PHP Fatal error:  Uncaught Error: Class 'mysqli' not found in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:46:54 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:46:57 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:38 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:40 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:44 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:46 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:47 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:47:48 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 7
+[24-Sep-2021 11:50:02 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 11:50:03 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 11:50:32 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 11:50:33 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 11:52:53 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 11:52:55 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 11:52:56 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 11:52:59 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 11:56:04 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 11:56:05 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:03 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:05 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:06 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:07 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:07 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:08 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:08 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:08 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 12:01:22 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 13:01:35 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:07:55 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:52 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:53 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:54 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:55 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:55 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 15:12:56 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 16:57:44 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:52:44 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:14 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:18 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:20 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:22 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:28 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/2form.php on line 45
+[24-Sep-2021 18:55:28 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/2form.php on line 47
+[24-Sep-2021 18:55:28 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/2form.php on line 51
+[24-Sep-2021 18:55:35 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 18:55:36 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect() in /home/lukaspe1/public_html/db/db_test.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 9
+[24-Sep-2021 19:14:25 Europe/Zurich] PHP Fatal error:  Uncaught Error: Class 'mysqli' not found in /home/lukaspe1/public_html/db/2test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/2test.php on line 3
+[24-Sep-2021 19:20:03 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 19:20:27 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 19:20:31 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 19:20:40 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 19:20:51 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/db_test.php on line 8
+[24-Sep-2021 19:23:15 Europe/Zurich] PHP Fatal error:  Uncaught Error: Class 'mysqli' not found in /home/lukaspe1/public_html/db/db_test.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 4
+[24-Sep-2021 19:25:07 Europe/Zurich] PHP Fatal error:  Uncaught Error: Class 'mysqli' not found in /home/lukaspe1/public_html/db/db_test.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/db_test.php on line 2
+[24-Sep-2021 19:27:55 Europe/Zurich] PHP Warning:  mysqli::__construct(): (HY000/1044): Access denied for user 'lukaspe1_lukas'@'localhost' to database 'lukaspe1_my_db' in /home/lukaspe1/public_html/db/db_test.php on line 2
+[24-Sep-2021 19:55:08 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/lukaspe1/public_html/db/create_table.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 11
+[24-Sep-2021 19:57:02 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/lukaspe1/public_html/db/create_table.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 11
+[24-Sep-2021 19:57:55 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/lukaspe1/public_html/db/create_table.php on line 12
+[24-Sep-2021 19:58:20 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/lukaspe1/public_html/db/create_table.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 12
+[24-Sep-2021 19:59:40 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/lukaspe1/public_html/db/create_table.php on line 10
+[24-Sep-2021 20:00:06 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_select_db() in /home/lukaspe1/public_html/db/create_table.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 23
+[24-Sep-2021 20:00:24 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_select_db() in /home/lukaspe1/public_html/db/create_table.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 23
+[24-Sep-2021 20:07:28 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_select_db() in /home/lukaspe1/public_html/db/create_table.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 22
+[24-Sep-2021 20:11:40 Europe/Zurich] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/lukaspe1/public_html/db/create_table.php on line 22
+[24-Sep-2021 20:11:40 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_query() in /home/lukaspe1/public_html/db/create_table.php:23
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 23
+[24-Sep-2021 20:15:15 Europe/Zurich] PHP Warning:  mysqli_query() expects parameter 3 to be int, object given in /home/lukaspe1/public_html/db/create_table.php on line 23
+[24-Sep-2021 20:15:15 Europe/Zurich] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_error() in /home/lukaspe1/public_html/db/create_table.php:26
+Stack trace:
+#0 {main}
+  thrown in /home/lukaspe1/public_html/db/create_table.php on line 26
+[24-Sep-2021 20:47:59 Europe/Zurich] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/lukaspe1/public_html/db/sel_db.php on line 14
+[24-Sep-2021 20:52:51 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/sel_db.php on line 15
+[24-Sep-2021 20:55:55 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$result' (T_VARIABLE), expecting ')' in /home/lukaspe1/public_html/db/sel_db.php on line 14
+[24-Sep-2021 20:56:23 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/sel_db.php on line 14
+[24-Sep-2021 20:58:35 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/lukaspe1/public_html/db/sel_db.php on line 24
+[24-Sep-2021 20:59:10 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/sel_db.php on line 14
+[25-Sep-2021 11:41:02 Europe/Zurich] PHP Notice:  Undefined variable: conn in /home/lukaspe1/public_html/db/ins_db.php on line 41
+[25-Sep-2021 11:41:02 Europe/Zurich] PHP Notice:  Trying to get property 'error' of non-object in /home/lukaspe1/public_html/db/ins_db.php on line 41
+[25-Sep-2021 11:41:02 Europe/Zurich] PHP Notice:  Undefined variable: conn in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:41:02 Europe/Zurich] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:41:02 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/ins_db.php on line 83
+[25-Sep-2021 11:41:28 Europe/Zurich] PHP Notice:  Undefined variable: conn in /home/lukaspe1/public_html/db/ins_db.php on line 41
+[25-Sep-2021 11:41:28 Europe/Zurich] PHP Notice:  Trying to get property 'error' of non-object in /home/lukaspe1/public_html/db/ins_db.php on line 41
+[25-Sep-2021 11:41:28 Europe/Zurich] PHP Notice:  Undefined variable: conn in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:41:28 Europe/Zurich] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:41:28 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/ins_db.php on line 83
+[25-Sep-2021 11:42:31 Europe/Zurich] PHP Notice:  Undefined variable: conn in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:42:31 Europe/Zurich] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/lukaspe1/public_html/db/ins_db.php on line 55
+[25-Sep-2021 11:42:31 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/ins_db.php on line 83
+[25-Sep-2021 11:47:34 Europe/Zurich] PHP Notice:  Undefined index: time in /home/lukaspe1/public_html/db/ins_db.php on line 13
+[25-Sep-2021 11:49:34 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$change' (T_VARIABLE) in /home/lukaspe1/public_html/db/ins_db.php on line 63
+[25-Sep-2021 11:49:38 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$change' (T_VARIABLE) in /home/lukaspe1/public_html/db/ins_db.php on line 63
+[25-Sep-2021 16:29:51 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/ins_db.php on line 36
+[25-Sep-2021 18:32:01 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/2form.php on line 66
+[25-Sep-2021 18:32:01 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/2form.php on line 68
+[25-Sep-2021 18:32:01 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/2form.php on line 72
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/skript.php on line 9
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: timer in /home/lukaspe1/public_html/db/skript.php on line 11
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: comment in /home/lukaspe1/public_html/db/skript.php on line 13
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/skript.php on line 15
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/skript.php on line 28
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: timer in /home/lukaspe1/public_html/db/skript.php on line 28
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: comment in /home/lukaspe1/public_html/db/skript.php on line 28
+[25-Sep-2021 19:06:03 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/skript.php on line 28
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/skript.php on line 10
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: timer in /home/lukaspe1/public_html/db/skript.php on line 12
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: comment in /home/lukaspe1/public_html/db/skript.php on line 14
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/skript.php on line 29
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: timer in /home/lukaspe1/public_html/db/skript.php on line 29
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: comment in /home/lukaspe1/public_html/db/skript.php on line 29
+[25-Sep-2021 19:10:05 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/skript.php on line 29
+[25-Sep-2021 19:14:18 Europe/Zurich] PHP Parse error:  syntax error, unexpected '$timer' (T_VARIABLE) in /home/lukaspe1/public_html/db/skript.php on line 11
+[25-Sep-2021 19:20:56 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'ON' (T_STRING) in /home/lukaspe1/public_html/db/skript.php on line 37
+[25-Sep-2021 20:03:10 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 32
+[25-Sep-2021 20:03:10 Europe/Zurich] PHP Notice:  Undefined index: timer in /home/lukaspe1/public_html/db/table.php on line 33
+[25-Sep-2021 20:03:10 Europe/Zurich] PHP Notice:  Undefined index: comment in /home/lukaspe1/public_html/db/table.php on line 34
+[25-Sep-2021 20:03:10 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/table.php on line 35
+[25-Sep-2021 20:03:10 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/table.php on line 61
+[25-Sep-2021 20:03:53 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/table.php on line 45
+[25-Sep-2021 20:05:21 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects exactly 1 parameter, 2 given in /home/lukaspe1/public_html/db/table.php on line 45
+[25-Sep-2021 20:05:43 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects exactly 1 parameter, 2 given in /home/lukaspe1/public_html/db/table.php on line 45
+[25-Sep-2021 20:05:45 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects exactly 1 parameter, 2 given in /home/lukaspe1/public_html/db/table.php on line 45
+[25-Sep-2021 20:05:53 Europe/Zurich] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/table.php on line 45
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[25-Sep-2021 20:06:48 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/table.php on line 48
+[26-Sep-2021 01:08:52 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'while' (T_WHILE), expecting ',' or ';' in /home/lukaspe1/public_html/db/db.php on line 83
+[26-Sep-2021 01:19:39 Europe/Zurich] PHP Fatal error:  Can't use function return value in write context in /home/lukaspe1/public_html/db/db.php on line 90
+[26-Sep-2021 13:34:59 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 13
+[26-Sep-2021 13:34:59 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 14
+[26-Sep-2021 14:34:48 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 14:35:05 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 14:35:45 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 15:17:52 Europe/Zurich] PHP Parse error:  syntax error, unexpected '4' (T_LNUMBER), expecting ',' or ';' in /home/lukaspe1/public_html/db/db.php on line 94
+[26-Sep-2021 15:19:51 Europe/Zurich] PHP Parse error:  syntax error, unexpected '4' (T_LNUMBER), expecting ',' or ';' in /home/lukaspe1/public_html/db/db.php on line 94
+[26-Sep-2021 15:19:54 Europe/Zurich] PHP Parse error:  syntax error, unexpected '4' (T_LNUMBER), expecting ',' or ';' in /home/lukaspe1/public_html/db/db.php on line 94
+[26-Sep-2021 16:59:58 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/skript.php on line 13
+[26-Sep-2021 16:59:58 Europe/Zurich] PHP Notice:  Undefined index: timer in /home/lukaspe1/public_html/db/skript.php on line 14
+[26-Sep-2021 16:59:58 Europe/Zurich] PHP Notice:  Undefined index: comment in /home/lukaspe1/public_html/db/skript.php on line 15
+[26-Sep-2021 16:59:58 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/skript.php on line 13
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: timer in /home/lukaspe1/public_html/db/skript.php on line 14
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: comment in /home/lukaspe1/public_html/db/skript.php on line 15
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/skript.php on line 13
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: timer in /home/lukaspe1/public_html/db/skript.php on line 14
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: comment in /home/lukaspe1/public_html/db/skript.php on line 15
+[26-Sep-2021 17:00:24 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 17:00:28 Europe/Zurich] PHP Notice:  Undefined index: change in /home/lukaspe1/public_html/db/skript.php on line 13
+[26-Sep-2021 17:00:28 Europe/Zurich] PHP Notice:  Undefined index: timer in /home/lukaspe1/public_html/db/skript.php on line 14
+[26-Sep-2021 17:00:28 Europe/Zurich] PHP Notice:  Undefined index: comment in /home/lukaspe1/public_html/db/skript.php on line 15
+[26-Sep-2021 17:00:28 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[26-Sep-2021 17:33:30 Europe/Zurich] PHP Notice:  Undefined index: review in /home/lukaspe1/public_html/db/skript.php on line 16
+[27-Sep-2021 21:48:36 Europe/Zurich] PHP Parse error:  syntax error, unexpected '*', expecting end of file in /home/lukaspe1/public_html/db/loginprocess.php on line 43
+[27-Sep-2021 21:50:15 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 21:50:24 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 21:50:58 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 21:58:40 Europe/Zurich] PHP Parse error:  syntax error, unexpected ')' in /home/lukaspe1/public_html/db/loginprocess.php on line 28
+[27-Sep-2021 21:59:36 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'setcookie' (T_STRING) in /home/lukaspe1/public_html/db/loginprocess.php on line 30
+[27-Sep-2021 22:00:30 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 22:00:38 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 22:00:51 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[27-Sep-2021 23:43:17 Europe/Zurich] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/lukaspe1/public_html/db/loginprocess.php on line 42
+[28-Sep-2021 00:10:27 Europe/Zurich] PHP Notice:  Undefined variable: change in /home/lukaspe1/public_html/db/2form.php on line 66
+[28-Sep-2021 00:10:27 Europe/Zurich] PHP Notice:  Undefined variable: time in /home/lukaspe1/public_html/db/2form.php on line 68
+[28-Sep-2021 00:10:27 Europe/Zurich] PHP Notice:  Undefined variable: review in /home/lukaspe1/public_html/db/2form.php on line 72
+[01-Oct-2021 15:16:28 Europe/Zurich] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/lukaspe1/public_html/db/loginprocess.php on line 25
+[01-Nov-2021 20:48:20 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[01-Nov-2021 20:48:20 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[01-Nov-2021 20:48:48 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[01-Nov-2021 20:48:48 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[02-Nov-2021 13:19:51 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[02-Nov-2021 13:19:51 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[02-Nov-2021 13:20:46 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[02-Nov-2021 13:20:46 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[26-Jan-2022 10:11:59 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[26-Jan-2022 10:11:59 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[26-Jan-2022 10:12:20 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[26-Jan-2022 10:12:20 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[26-Jan-2022 10:12:21 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[26-Jan-2022 10:12:21 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[26-Jan-2022 10:12:21 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[26-Jan-2022 10:12:21 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[26-Jan-2022 10:12:22 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[26-Jan-2022 10:12:22 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[17-Feb-2022 11:35:34 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[17-Feb-2022 11:35:34 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[05-May-2022 21:32:35 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[05-May-2022 21:32:35 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[05-May-2022 21:32:57 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[05-May-2022 21:32:57 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[05-May-2022 21:33:01 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[05-May-2022 21:33:01 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[05-May-2022 21:33:20 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[05-May-2022 21:33:20 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8
+[05-May-2022 21:33:41 Europe/Zurich] PHP Notice:  Undefined index: user_name in /home/lukaspe1/public_html/db/user_skript.php on line 7
+[05-May-2022 21:33:41 Europe/Zurich] PHP Notice:  Undefined index: user_pw in /home/lukaspe1/public_html/db/user_skript.php on line 8

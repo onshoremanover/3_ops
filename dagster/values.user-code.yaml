@@ -1,0 +1,15 @@
+enableExampleUserCode: false  # 🚫 disable the default crashy example
+
+userDeployments:
+  enabled: true
+  deployments:
+    - name: my-assets
+      image:
+        repository: harbor.publio.online/dagster/dagster-user-code
+        tag: latest
+      dagsterApiGrpcArgs:
+        - "-m"
+        - "my_dagster_project"
+      codeServer:
+        port: 3030
+

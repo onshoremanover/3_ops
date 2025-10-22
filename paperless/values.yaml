@@ -1,0 +1,72 @@
+# paperless-values.yaml
+env:
+  TZ: "Europe/Amsterdam"
+
+  PAPERLESS_ALLOWED_HOSTS: "paperless.publio.online,127.0.0.1"
+  PAPERLESS_SITE_URL: "https://paperless.publio.online"    
+  PAPERLESS_ADMIN_USER: "admin"
+  PAPERLESS_ADMIN_PASSWORD: "hiphonei32"
+
+image:
+  repository: ghcr.io/paperless-ngx/paperless-ngx
+  tag: "2.18.2"
+  pullPolicy: IfNotPresent    
+
+# Use built-in PostgreSQL (or set both to false/use an external DB)
+postgresql:
+  enabled: true
+  postgresqlDatabase: paperless
+  postgresqlUsername: paperless
+  postgresqlPassword: YOUR_STRONG_PASSWORD
+  primary:
+    persistence:
+      enabled: true
+      storageClass: ssd-hostpath-paperless
+      size: 40Gi
+
+mariadb:
+  enabled: false
+
+redis:
+  enabled: true
+
+persistence:
+  data:
+    enabled: true
+    storageClass: ssd-hostpath-paperless
+    size: 20Gi
+    accessMode: ReadWriteMany
+
+  media:
+    enabled: true
+    storageClass: ssd-hostpath-paperless 
+    size: 50Gi
+    accessMode: ReadWriteMany
+
+  consume:
+    enabled: true
+    storageClass: ssd-hostpath-paperless
+    size: 5Gi
+    accessMode: ReadWriteOnce
+
+  export:
+    enabled: true
+    storageClass: ssd-hostpath-paperless
+    size: 5Gi
+    accessMode: ReadWriteOnce
+
+ingress:
+  main:
+    enabled: true
+    ingressClassName: public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: paperless.publio.online
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+          - paperless.publio.online
+        secretName: paperless-tls

@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weekendtrip-app
+  namespace: weekendtrip
+  labels:
+    app: weekendtrip-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weekendtrip-app
+  template:
+    metadata:
+      labels:
+        app: weekendtrip-app
+    spec:
+      imagePullSecrets:
+        - name: harbor-cred
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: app
+          image: harbor.publio.online/weekendtrip/app:1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8501
+          env:
+            # Optional: make Streamlit listen on 0.0.0.0 and correct port (already set in Docker CMD)
+            - name: PLACES_DIR
+              value: /data/places  
+            - name: STREAMLIT_SERVER_PORT
+              value: "8501"
+            - name: STREAMLIT_SERVER_ADDRESS
+              value: "0.0.0.0"
+          volumeMounts:
+            - name: places-data
+              mountPath: /data/places
+              readOnly: false   # set to false so the web form can write JSONL files
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+      volumes:
+        - name: places-data
+          persistentVolumeClaim:
+            claimName: places-pvc

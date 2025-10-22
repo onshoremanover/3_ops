@@ -1,0 +1,72 @@
+# Persistent volume for ErsatzTV configuration (SQLite DB, artwork cache, etc.)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ersatztv-config
+  namespace: ersatz
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ersatztv
+  namespace: ersatz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ersatztv
+  template:
+    metadata:
+      labels:
+        app: ersatztv
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: think
+      containers:
+      - name: ersatztv
+        image: jasongdove/ersatztv:latest-vaapi   # pick :latest, :-nvidia or :-vaapi as suits your hardware  [oai_citation:1‡ersatztv.org](https://ersatztv.org/docs/user-guide/install/)
+        ports:
+        - containerPort: 8409
+        env:
+        - name: TZ
+          value: Europe/Amsterdam
+        volumeMounts:
+        - name: config
+          mountPath: /root/.local/share/ersatztv        # internal default
+        - name: media
+          mountPath: /media                             # we’ll reference this later
+          readOnly: true
+        # optional GPU passthrough (Intel iGPU example)
+        # resources:
+        #   limits:
+        #     gpu.intel.com/i915: "1"
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: ersatztv-config
+      - name: media
+        hostPath:
+          path: /mnt/data/zweiterra/jellyfin-media
+          type: Directory
+---
+# Expose via NodePort (easy) – adjust if you already use an Ingress
+apiVersion: v1
+kind: Service
+metadata:
+  name: ersatz
+  namespace: ersatz
+spec:
+  type: NodePort
+  selector:
+    app: ersatztv
+  ports:
+  - port: 8409
+    targetPort: 8409
+    nodePort: 30849    

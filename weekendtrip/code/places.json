@@ -1,0 +1,99 @@
+[
+    {
+        "title": "Natuurhuisje 50071 — Zeeland (NB)",
+        "url": "https://www.natuurhuisje.nl/vakantiehuisje/50071?arrivalDate=2026-02-20&departureDate=2026-02-22&adults=6",
+        "price": "339,95€",
+        "lat": 51.696, "lon": 5.677,
+        "note": "Village center of Zeeland (Maashorst) as reference."
+    },
+    {
+        "title": "Roompot — Bungalowpark Hoenderloo (Bosvilla 6-7)",
+        "url": "https://www.roompot.nl/parken/bungalowpark-hoenderloo/accommodaties/bosvilla-6-7#filter:eyJhIjoiMjAtMDItMjAyNiIsImQiOiIyMy0wMi0yMDI2IiwibmQiOjUsInN0Ijo5MTV9",
+        "price": "527€",
+        "lat": 52.12111, "lon": 5.92425,
+        "note": "Approx. near Krimweg 140 (park entrance)."
+    },
+    {
+        "title": "Landal Beach Resort Ooghduyne — 6D2",
+        "url": "https://www.landal.nl/parken/beach-resort-ooghduyne/accommodaties/6d2#filter:eyJhIjoiMjAtMDItMjAyNiIsImQiOiIyMy0wMi0yMDI2IiwibmQiOjUsInN0Ijo5MjV9",
+        "price": "464€",
+        "lat": 52.8939048, "lon": 4.7297614,
+        "note": "Official resort GPS."
+    },
+    {
+        "title": "HomeToGo #4 — Den Ham (Overijssel)",
+        "url": "https://www.hometogo.nl/rental/3d16b6263c97a3f6c458de7568e4a118",
+        "price": "depends",
+        "lat": 52.465, "lon": 6.49,
+        "note": "Region pin — listing page indicates Den Ham."
+    },
+    {
+        "title": "HomeToGo #5 — Den Ham (Overijssel)",
+        "url": "https://www.hometogo.nl/rental/2e00364deb60f5f9246e6d7558d68187",
+        "price": "depends",
+        "lat": 52.4658, "lon": 6.4958,
+        "note": "Region pin."
+    },
+    {
+        "title": "HomeToGo #6 — Den Ham (Overijssel)",
+        "url": "https://www.hometogo.nl/rental/09b59fb703932953",
+        "price": "depends",
+        "lat": 52.46583, "lon": 6.49583,
+        "note": "Region pin."
+    },
+    {
+        "title": "Landal Volendam — 6C",
+        "url": "https://www.landal.nl/parken/volendam/accommodaties/6c#filter:eyJhIjoiMjAtMDItMjAyNiIsImQiOiIyMy0wMi0yMDI2IiwibmQiOjUsInN0Ijo5MjV9",
+        "price": "593€",
+        "lat": 52.4950, "lon": 5.07083,
+        "note": "Approx. Volendam center; park is on Slobbeland 5 nearby."
+    },
+    {
+        "title": "Texel — G-21A Bouwlust (De Cocksdorp)",
+        "url": "https://naartexel.nl/accommodaties/g-21a-bouwlust/#arrival=2026-02-20&departure=2026-02-23&adults=6",
+        "price": "615.08€",
+        "lat": 53.1550263, "lon": 4.8696559,
+        "note": "De Cocksdorp village center as reference."
+    },
+    {
+        "title": "Airbnb — Giethmen",
+        "url": "https://www.airbnb.nl/rooms/1226650684758700599?adults=6&check_in=2026-02-27&check_out=2026-03-01&search_mode=regular_search&source_impression_id=p3_1760162387_P3ClQWArc53YA03x&previous_page_section_name=1000&federated_search_id=81d0dec2-8e6e-47b1-8f98-507e76d0e94c",
+        "price": "509.31€",
+        "lat": 52.508,
+        "lon": 6.423,
+        "note": "Giethmen town center (listing hides exact location)."
+    },
+    {
+        "title": "Airbnb — Giethoorn",
+        "url": "https://www.airbnb.nl/rooms/970280?adults=6&check_in=2026-02-27&check_out=2026-03-01&search_mode=regular_search&source_impression_id=p3_1760162387_P3NVjF3_dQyxF2_V&previous_page_section_name=1000&federated_search_id=81d0dec2-8e6e-47b1-8f98-507e76d0e94c",
+        "price": "518.67€",
+        "lat": 52.742,
+        "lon": 6.079,
+        "note": "Giethoorn village center (approx)."
+    },
+    {
+        "title": "Airbnb — Balkbrug",
+        "url": "https://www.airbnb.nl/rooms/37048900?adults=6&check_in=2026-02-27&check_out=2026-03-01&search_mode=regular_search&source_impression_id=p3_1760162387_P3xGEiQCcQbS8W3i&previous_page_section_name=1000&federated_search_id=81d0dec2-8e6e-47b1-8f98-507e76d0e94c",
+        "price": "651.72€",
+        "lat": 52.597,
+        "lon": 6.278,
+        "note": "Balkbrug center (approx)."
+    },
+    {
+        "title": "Airbnb — De Koog (Texel)",
+        "url": "https://www.airbnb.nl/rooms/986709093947920486?adults=6&check_in=2026-02-27&check_out=2026-03-01&location=Overijssel%2C%20Nederland&search_mode=regular_search&source_impression_id=p3_1760163066_P3d-Ot8EqybF5Kmb&previous_page_section_name=1001",
+        "price": "634.65€",
+        "lat": 53.094,
+        "lon": 4.762,
+        "note": "De Koog village center (approx)."
+    },
+    {
+        "title": "Airbnb — Oosterend (Terschelling, Friesland)",
+        "url": "https://www.airbnb.nl/rooms/6960959?adults=6&check_in=2026-02-27&check_out=2026-03-01",
+        "price": "556.14€",
+        "lat": 53.381,
+        "lon": 5.338,
+        "note": "Oosterend, Terschelling (Friesland) — easternmost village on the island."
+    }
+
+]

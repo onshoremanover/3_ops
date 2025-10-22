@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: clearml-ingress
+  namespace: clearml
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.publio.online;";
+      add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
+spec:
+  ingressClassName: public
+  rules:
+    - host: api.clearml.publio.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: clearml-apiserver
+                port:
+                  number: 8008
+    - host: app.clearml.publio.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: clearml-webserver
+                port:
+                  number: 80
+    - host: files.clearml.publio.online
+      http:
+        paths:
+        - backend:
+            service:
+              name: clearml-fileserver
+              port:
+                number: 8081
+          path: /
+          pathType: Prefix
+
+  tls:
+    - hosts:
+        - api.clearml.publio.online
+        - app.clearml.publio.online
+        - files.clearml.publio.online
+      secretName: clearml-tls
+

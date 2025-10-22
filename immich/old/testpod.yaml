@@ -1,0 +1,19 @@
+# debug-immich-library.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: immich-debug
+  namespace: immich
+spec:
+  containers:
+  - name: debug
+    image: ubuntu
+    command: ["/bin/bash", "-c", "sleep infinity"]
+    volumeMounts:
+    - name: library
+      mountPath: /mnt/upload
+  volumes:
+  - name: library
+    persistentVolumeClaim:
+      claimName: immich-library-pvc
+  restartPolicy: Never

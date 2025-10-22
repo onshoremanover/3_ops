@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: siyuan
+  namespace: notes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: siyuan
+  template:
+    metadata:
+      labels:
+        app: siyuan
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: siyuan
+          image: b3log/siyuan:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 6806
+          env:
+            - name: SIYUAN_WORKSPACE_PATH
+              value: /siyuan/workspace
+            - name: SIYUAN_ACCESS_AUTH_CODE
+              valueFrom:
+                secretKeyRef:
+                  name: siyuan-auth
+                  key: SIYUAN_ACCESS_AUTH_CODE
+            # Optional: adjust file ownership inside container
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+          volumeMounts:
+            - name: workspace
+              mountPath: /siyuan/workspace
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+      volumes:
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: siyuan-workspace

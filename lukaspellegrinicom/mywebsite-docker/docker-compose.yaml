@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/public/:/var/www/html/
+      - ./config/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=app_user
+      - DB_PASSWORD=app_password
+      - DB_NAME=lukaspe1_my_db
+    networks:
+      - mynetwork
+
+  db:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: lukaspe1_my_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init/:/docker-entrypoint-initdb.d/
+    ports:
+      - "3306:3306" # Optional: Expose for local access
+    networks:
+      - mynetwork
+
+volumes:
+  db_data:
+
+networks:
+  mynetwork:
+

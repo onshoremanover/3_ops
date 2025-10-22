@@ -1,0 +1,8 @@
+server:
+  configs:
+    params:
+      server.insecure: "true"  # Enables Argo CD to listen on port 80 (HTTP)
+
+  ingress:
+    enabled: false
+

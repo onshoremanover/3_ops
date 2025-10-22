@@ -1,0 +1,416 @@
+---
+openapi: "3.0.0"
+info:
+  title: School Management System
+  version: "1.0"
+paths:
+  /Student/{idStudent}:
+   get:
+      summary: Get a list of all students
+      description: Returns a list of all students in the school.
+      operationId: getStudents
+      parameters:
+        - name: idStudent
+          in: path
+          description: ID of the student
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code 
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+  /Class/{idClass}:
+    put:
+      summary: Update a class
+      description: Updates a class in the school.
+      operationId: updateClass
+      parameters:
+        - name: idClass
+          in: path
+          description: ID of the class
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Class object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Class'
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Class'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+  /Teacher/{idTeacher}:
+    get:
+      summary: Get a list of all teachers
+      description: Returns a list of all teachers in the school.
+      operationId: getTeachers
+      parameters:
+        - name: idTeacher
+          in: path
+          description: ID of the teacher
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Teacher'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '403': 
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                  status:
+                    type: integer
+                    description: The HTTP status code
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        idStudent:
+          type: integer
+          description: ID of the student
+        name:
+          type: string
+          description: Name of the student
+        dob: 
+          type: string
+          description: Date of birth of the student
+        enrollmentStatus:
+          type: string
+          description: Enrollment status of the student
+    Teacher:
+      type: object
+      properties:
+        idTeacher:
+          type: integer
+          description: ID of the teacher
+        name:
+          type: string
+          description: Name of the teacher
+        subject:
+          type: string
+          description: Subject of the teacher
+        yearsOfExperience:
+          type: integer
+          description: Years of experience of the teacher
+    Class:
+      type: object
+      properties:
+        idClass:
+          type: integer
+          description: ID of the class
+        name:
+          type: string
+          description: Name of the class
+        size:
+          type: integer
+          description: Size of the class
+    Classroom:
+      type: object
+      properties:
+        idClassroom:
+          type: integer
+          description: ID of the classroom
+        capacity:
+          type: integer
+          description: Capacity of the classroom
+        roomType:
+          type: string
+          description: Type of the classroom
+        facilities:
+          type: array
+          items:
+            type: string
+            description: Facilities of the classroom
+    Course:
+      type: object
+      properties:
+        idCourse:
+          type: integer
+          description: ID of the course
+        name:
+          type: string
+          description: Name of the course
+        code:
+          type: string
+          description: Code of the course
+        numberOfCredits:
+          type: integer
+          description: Number of credits of the course
+        classroom:
+          type: string
+          description: Classroom of the course
+          items:
+            $ref: "#/components/schemas/Classroom"
+        teacher:
+          type: string
+          description: Teacher of the course
+          items:
+            $ref: "#/components/schemas/Teacher"
+        class:
+          type: string
+          description: Class of the course
+          items:
+            $ref: "#/components/schemas/Class"
+    Course_has_Student:
+      type: object
+      properties:
+        course:
+          type: string
+          description: Course of the student
+          items:
+            $ref: "#/components/schemas/Course"
+        student:
+          type: string
+          description: Student of the course
+          items:
+            $ref: "#/components/schemas/Student"
+        
+

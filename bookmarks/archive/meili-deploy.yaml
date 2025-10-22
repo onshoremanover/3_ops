@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meilisearch
+  namespace: bookmarks
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: meilisearch}
+  template:
+    metadata:
+      labels: {app: meilisearch}
+    spec:
+      containers:
+        - name: meilisearch
+          # Pin to a current v1.x tag you trust (e.g. v1.7.4). Using v1 here for brevity.
+          image: getmeili/meilisearch:v1
+          command: ["meilisearch"]
+          args: ["--env=production"]
+          env:
+            - name: MEILI_ENV
+              value: "production"
+            - name: MEILI_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: karakeep-secrets
+                  key: MEILI_MASTER_KEY
+          ports:
+            - containerPort: 7700
+          volumeMounts:
+            - name: data
+              mountPath: /meili_data
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: meili-data

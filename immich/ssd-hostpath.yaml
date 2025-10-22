@@ -1,0 +1,10 @@
+# ssd-hostpath.yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ssd-hostpath-immich          # call it whatever you like
+provisioner: microk8s.io/hostpath
+reclaimPolicy: Retain         # or Retain if you want to keep data after PVC deletion
+parameters:
+  pvDir: /mnt/data/zweiterra/microk8s-storage/immich   # <‑‑ the SSD path
+volumeBindingMode: WaitForFirstConsumer

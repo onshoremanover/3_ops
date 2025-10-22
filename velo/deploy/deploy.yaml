@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velo 
+  namespace: velo 
+  labels:
+    app: velo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: velo
+  template:
+    metadata:
+      labels:
+        app: velo
+    spec:
+      containers:
+      - name: velo
+        image: harbor.publio.online/velo/velotest:latest
+        ports:
+        - containerPort: 8501
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+      imagePullSecrets:
+      - name: harbor-creds
+

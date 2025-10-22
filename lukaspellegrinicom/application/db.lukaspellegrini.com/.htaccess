@@ -1,0 +1,4 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^db\.lukaspellegrini\.com$
+RewriteRule ^/?$ "https\:\/\/lukaspellegrini\.com\/db" [R=301,L]

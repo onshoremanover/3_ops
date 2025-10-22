@@ -1,0 +1,121 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimat
+  namespace: heimat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimat
+  template:
+    metadata:
+      labels:
+        app: heimat
+    spec:
+      serviceAccountName: ingress-reader
+      containers:
+      - name: heimat
+        image: python:3.9
+        command: ["sh", "-c"]
+        args:
+          - |
+            pip install flask kubernetes &&
+            python - <<EOF
+            from flask import Flask, render_template_string
+            from kubernetes import client, config
+
+            app = Flask(__name__)
+
+            def get_all_ingresses():
+                config.load_incluster_config()
+                v1 = client.NetworkingV1Api()
+                ingress_list = []
+                namespaces = client.CoreV1Api().list_namespace().items
+                for ns in namespaces:
+                    namespace = ns.metadata.name
+                    ingresses = v1.list_namespaced_ingress(namespace=namespace).items
+                    for i in ingresses:
+                        if i.spec and i.spec.rules:
+                            for rule in i.spec.rules:
+                                if hasattr(rule, "host") and rule.host:
+                                    ingress_list.append({"namespace": namespace, "name": i.metadata.name, "host": rule.host})
+                return ingress_list
+
+            @app.route("/")
+            def index():
+                ingresses = get_all_ingresses()
+                html = """
+                <html>
+                <head>
+                    <title>Heimat</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f4;
+                            text-align: center;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        h1 {
+                            color: #333;
+                        }
+                        table {
+                            width: 60%;
+                            margin: auto;
+                            border-collapse: collapse;
+                            background: #fff;
+                            border-radius: 8px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        th, td {
+                            padding: 12px;
+                            border: 1px solid #ddd;
+                        }
+                        th {
+                            background-color: #007bff;
+                            color: white;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #f2f2f2;
+                        }
+                        a {
+                            color: #007bff;
+                            text-decoration: none;
+                            font-weight: bold;
+                        }
+                        a:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Available Websites</h1>
+                    <table>
+                        <tr>
+                            <th>Namespace</th>
+                            <th>Ingress Name</th>
+                            <th>Host</th>
+                        </tr>
+                """
+                for ingress in ingresses:
+                    html += f"""
+                        <tr>
+                            <td>{ingress['namespace']}</td>
+                            <td>{ingress['name']}</td>
+                            <td><a href='http://{ingress['host']}' target='_blank'>{ingress['host']}</a></td>
+                        </tr>
+                    """
+                html += """
+                    </table>
+                </body>
+                </html>
+                """
+                return html
+
+            if __name__ == "__main__":
+                app.run(host="0.0.0.0", port=5000)
+            EOF
+        ports:
+        - containerPort: 5000
+

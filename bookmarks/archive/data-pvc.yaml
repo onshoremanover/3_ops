@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: karakeep-data
+  namespace: bookmarks
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: ssd-hostpath-karakeep
+  resources:
+    requests:
+      storage: 10Gi

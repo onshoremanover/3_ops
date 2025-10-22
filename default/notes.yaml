@@ -1,0 +1,38 @@
+required:
+  - harbor
+  - hostpath
+  - nfs
+  - pgadmin
+
+myapps:
+  - splunkquiz
+  - velo
+    not yet working
+  - attack
+  - oceanrace
+
+office:
+  drive:
+    - nextcloud
+  mail:
+    - none
+  office:
+    pdf:
+      - paperless
+
+media:
+  movies:
+    - jellyfin
+      Shit thing, as both smb to write files
+  videos:
+    - mediacsm
+  pictures:
+    - immich
+      needs some work to make data not lost all the time
+
+ai:
+  - clearml
+  - dagster
+
+
+

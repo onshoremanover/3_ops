@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asterisk
+  namespace: phone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asterisk
+  template:
+    metadata:
+      labels:
+        app: asterisk
+    spec:
+      containers:
+      - name: asterisk
+        image: andrius/asterisk:latest
+        ports:
+        - containerPort: 5060 # SIP UDP
+          protocol: UDP
+        volumeMounts:
+        - name: config
+          mountPath: /etc/asterisk
+      volumes:
+      - name: config
+        configMap:
+          name: asterisk-config

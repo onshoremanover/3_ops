@@ -1,0 +1,23 @@
+mailu:
+  domain: publio.online
+  hostnames:
+    - mail.publio.online
+
+  secretKey: "CHANGE_ME_TO_A_SECRET_KEY"  # Generate with: openssl rand -hex 16
+
+  initialAccount:
+    enabled: true
+    username: lukas
+    domain: publio.online
+    password: "hiphonei32"
+
+  persistence:
+    storageClass: ssd-hostpath-mail
+    size: 5Gi
+
+  webmail:
+    enabled: true
+    type: snappymail  # Gmail-like modern UI
+
+ingress:
+  enabled: false

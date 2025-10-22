@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # The ACME URL for Let’s Encrypt production environment:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    
+    # Your email address (used by Let’s Encrypt for urgent notices)
+    email: lukas.a.pellegrini@gmail.com
+    
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod-account-key
+    
+    # Solvers define how cert-manager will prove domain ownership (using HTTP-01 here).
+    solvers:
+    - http01:
+        ingress:
+          class: public
+

@@ -1,0 +1,65 @@
+global:
+    extraEnvVars:
+      - name: CLEARML__apiserver__pre_populate__enabled
+        value: "true"
+      - name: CLEARML__apiserver__pre_populate__default_user
+        value: "admin@publio.online"
+      - name: CLEARML__apiserver__pre_populate__default_user_password
+        value: "password"
+
+apiserver:
+  ingress:
+    enabled: false
+
+webserver:
+  ingress:
+    enabled: false
+
+fileserver:
+  service:
+    type: ClusterIP
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 2Gi
+
+mongodb:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 5Gi
+
+elasticsearch:
+  enabled: true
+  replicas: 1
+  minimumMasterNodes: 1
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 5Gi
+  esJavaOpts: "-Xmx512m -Xms512m"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+

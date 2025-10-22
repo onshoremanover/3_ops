@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ssd-hostpath-nextcloud
+provisioner: microk8s.io/hostpath
+parameters:
+  pvDir: /mnt/data/zweiterra/microk8s-storage/nextcloud
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer

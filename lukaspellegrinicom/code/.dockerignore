@@ -1,0 +1,7 @@
+# .dockerignore
+**
+!.dockerignore
+!Dockerfile
+!src/**
+src/**/*.bak
+src/*.bak

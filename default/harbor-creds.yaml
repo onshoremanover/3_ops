@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJoYXJib3IucHVibGlvLm9ubGluZSI6eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJIaXBob25laTMyKyIsImVtYWlsIjoiYWRtaW5AcHVibGlvLm9ubGluZSIsImF1dGgiOiJZV1J0YVc0NlNHbHdhRzl1Wldrek1pcz0ifX19
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: harbor-creds
+type: kubernetes.io/dockerconfigjson

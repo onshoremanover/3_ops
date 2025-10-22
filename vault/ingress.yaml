@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vaultwarden-ingress
+  namespace: vault
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.publio.online;";
+      add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  ingressClassName: public
+  rules:
+  - host: vault.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vaultwarden          # 👈 Service name from the earlier manifest
+            port:
+              number: 80               # 👈 Vaultwarden listens on 80
+  tls:
+  - hosts:
+    - vault.publio.online
+    secretName: vault-tls

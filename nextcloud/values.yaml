@@ -1,0 +1,101 @@
+## values.yaml
+
+# Set the hostname for trusted domains and internal chart config
+nextcloud:
+  host: nextcloud.publio.online
+
+# Number of Nextcloud replicas
+replicaCount: 1
+
+# Container image
+image:
+  repository: nextcloud
+  tag: "30.0.10-apache"
+  pullPolicy: IfNotPresent
+
+# Service exposed inside the cluster
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress configuration for nextcloud.publio.online
+ingress:
+  enabled: true
+  className: public
+  annotations:
+    kubernetes.io/ingress.class: public
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: nextcloud.publio.online
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: nextcloud-tls
+      hosts:
+        - nextcloud.publio.online
+
+# Persist everything under /data/nextcloud on each node
+persistence:
+  enabled: true
+  hostPath:
+    path: /data/nextcloud
+    type: DirectoryOrCreate
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+# Reserve resources so PHP migrations don’t get OOM-killed
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+# Give Nextcloud up to 5m to finish its internal setup
+startupProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  failureThreshold: 30
+
+# Standard liveness probe, kicks in after startupProbe succeeds
+livenessProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Standard readiness probe
+readinessProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Configure Nextcloud to connect to the internal MariaDB
+externalDatabase:
+  enabled: true
+  type: mysql
+  host: my-release-mariadb
+  user: nextcloud
+  password: YOUR_STRONG_NEXTCLOUD_PASSWORD
+  database: nextcloud
+
+# Enable and configure internal MariaDB database
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: YOUR_STRONG_ROOT_PASSWORD
+    username: nextcloud
+    password: YOUR_STRONG_NEXTCLOUD_PASSWORD
+    database: nextcloud

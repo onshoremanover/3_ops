@@ -1,0 +1,8 @@
+helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
+helm repo update
+
+helm upgrade --install my-headlamp headlamp/headlamp \
+  -n kube-system \
+  --set ingress.enabled=false
+
+kubectl create token my-headlamp --namespace kube-system

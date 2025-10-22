@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karakeep-web
+  namespace: bookmarks
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: karakeep-web}
+  template:
+    metadata:
+      labels: {app: karakeep-web}
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/karakeep-app/karakeep:release
+          # If you prefer pinning: ghcr.io/karakeep-app/karakeep:0.26.0 (or current)
+          envFrom:
+            - configMapRef:
+                name: karakeep-config
+            - secretRef:
+                name: karakeep-secrets
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 6
+          livenessProbe:
+            httpGet: { path: /, port: 3000 }
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          startupProbe:
+            httpGet: { path: /, port: 3000 }
+            failureThreshold: 30
+            periodSeconds: 2              
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1.5Gi"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: karakeep-data

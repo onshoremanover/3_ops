@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vault-ingress
+  namespace: vault
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.publio.online;";
+      add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
+spec:
+  ingressClassName: public
+  rules:
+  - host: vault.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vault-ui       # 👈 this one
+            port:
+              number: 8200       # 👈 this one
+  tls:
+  - hosts:
+    - vault.publio.online
+    secretName: vault-tls        # or oceanrace-tls if you're reusing the cert
+

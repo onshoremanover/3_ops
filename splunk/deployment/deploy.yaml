@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunkquiz
+  namespace: splunkquiz
+  labels:
+    app: splunkquiz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunkquiz
+  template:
+    metadata:
+      labels:
+        app: splunkquiz
+    spec:
+      containers:
+        - name: splunkquiz
+          image: harbor.publio.online/splunk/splunkquiz:latest
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: harbor-creds
+

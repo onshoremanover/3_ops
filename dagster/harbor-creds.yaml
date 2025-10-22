@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJoYXJib3IucHVibGlvLm9ubGluZSI6eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJUaGVzdW1tZXJpc21hZ2ljMSIsImVtYWlsIjoibHVrYXMuYS5wZWxsZWdyaW5pQGdtYWlsLmNvbSIsImF1dGgiOiJZV1J0YVc0NlZHaGxjM1Z0YldWeWFYTnRZV2RwWXpFPSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: "2025-01-15T11:32:16Z"
+  name: harbor-creds
+  namespace: velo
+  resourceVersion: "222516"
+  uid: a788b79c-5c20-4ccb-b2dc-847693d99a32
+type: kubernetes.io/dockerconfigjson

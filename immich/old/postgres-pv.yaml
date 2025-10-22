@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-postgres-pv
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ssd-hostpath-immich
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/immich/immich-postgres-data
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: immich
+    name: immich-postgres-pvc

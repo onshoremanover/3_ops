@@ -1,0 +1,23 @@
+server:
+  dev:
+    enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: public
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    hosts:
+      - host: vault.publio.online
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - hosts:
+          - vault.publio.online
+        secretName: oceanrace-tls
+
+ui:
+  enabled: true
+  serviceType: ClusterIP
+

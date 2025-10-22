@@ -1,0 +1,82 @@
+image:
+  repository: ghcr.io/immich-app/immich-server
+  tag: v2.0.1    
+
+postgresql:
+  enabled: false
+
+global:
+  nodeSelector:
+    immich-home: "true"
+
+defaultResources: {}
+env:
+  REDIS_HOSTNAME: immich-redis-master
+  DB_HOSTNAME: immich-postgresql
+  DB_USERNAME: immich
+  DB_PASSWORD: immichpassword
+  DB_DATABASE_NAME: immich
+  IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
+
+defaultPodOptions:
+  runtimeClassName: runc  
+  resources: {}   
+
+microservices:
+  immich-node: ssd
+  image:
+    repository: ghcr.io/immich-app/immich-server   # same image, different command
+    tag: v2.0.1
+
+redis:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: ssd-hostpath-immich
+    size: 2Gi
+
+immich:
+  persistence:
+    library:
+      existingClaim: immich-library-pvc
+  metrics:
+    enabled: false
+
+runtimeClassName: runc        # tell the chart to use the plain runc RuntimeClass
+
+
+server:
+  enabled: true
+  immich-node: ssd
+  ingress:
+    main:
+      enabled: false
+  resources:                  # sane CPU‑only defaults
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 2
+      memory: 10Gi
+
+machine-learning:
+  immich-node: ssd
+  runtimeClassName: "runc"        # tell the chart to use the plain runc RuntimeClass
+  enabled: true
+  image:
+    repository: ghcr.io/immich-app/immich-machine-learning
+    pullPolicy: IfNotPresent
+  env:
+    TRANSFORMERS_CACHE: /cache
+  persistence:
+    cache:
+      enabled: true
+      size: 10Gi
+      type: emptyDir
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      cpu: 2
+      memory: 4Gi

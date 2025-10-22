@@ -1,0 +1,6 @@
+helm repo add gabe565 https://charts.gabe565.com
+helm repo update
+
+helm upgrade --install paperless-ngx gabe565/paperless-ngx \
+  -n paperless \
+  -f values.yaml

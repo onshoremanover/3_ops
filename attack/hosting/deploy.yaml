@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fail2ban-web
+  namespace: attack
+  labels:
+    app: fail2ban-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fail2ban-web
+  template:
+    metadata:
+      labels:
+        app: fail2ban-web
+    spec:
+      imagePullSecrets:
+        - name: harbor-creds
+      containers:
+        - name: fail2ban-web
+          image: harbor.publio.online/attack/fail2ban-web:latest
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: fail2ban-logs
+              mountPath: /fail2ban-logs/fail2ban.log
+              readOnly: true
+      volumes:
+        - name: fail2ban-logs
+          hostPath:
+            path: /var/log/fail2ban.log
+            type: File

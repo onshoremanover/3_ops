@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: places-pvc
+  namespace: weekendtrip
+spec:
+  accessModes:
+    - ReadWriteMany        # RWX lets multiple pods read/write; use ReadWriteOnce if RWX isn't available
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs

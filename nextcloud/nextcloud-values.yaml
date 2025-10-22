@@ -1,0 +1,89 @@
+nextcloud:
+  host: nextcloud.publio.online
+
+replicaCount: 1
+
+image:
+  repository: nextcloud
+  tag: "30.0.10-apache"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: public
+  annotations:
+    kubernetes.io/ingress.class: public
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: nextcloud.publio.online
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: nextcloud-tls
+      hosts:
+        - nextcloud.publio.online
+
+# Persist Nextcloud application data on the host
+persistence:
+  enabled: true
+  hostPath:
+    path: /data/nextcloud
+    type: DirectoryOrCreate
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+# Ensure the web process can write the volume
+securityContext:
+  fsGroup: 33
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+startupProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  failureThreshold: 30
+
+livenessProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /status.php
+    port: 80
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Internal MariaDB with its own persistent volume
+mariadb:
+  enabled: true
+  auth:
+    rootPassword: "<strong-root-password>"
+    username: nextcloud
+    password: "<strong-nextcloud-password>"
+    database: nextcloud
+  primary:
+    persistence:
+      enabled: true
+      size: 10Gi

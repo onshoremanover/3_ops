@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: splunkquiz-ingress
+  namespace: splunkquiz
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    app: splunkquiz
+spec:
+  ingressClassName: public
+  rules:
+  - host: splunkquiz.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: splunkquiz-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - splunkquiz.publio.online
+    secretName: splunkquiz-tls
+

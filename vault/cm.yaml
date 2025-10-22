@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vaultwarden-config
+  namespace: vault
+data:
+  DOMAIN: "https://vault.publio.online"    # 👈 updated
+  SIGNUPS_ALLOWED: "false"
+  INVITATIONS_ALLOWED: "true"
+  WEBSOCKET_ENABLED: "true"

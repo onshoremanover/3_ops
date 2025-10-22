@@ -1,0 +1,13 @@
+# jellyfin-media-pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-media
+  namespace: jellyfin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: jellyfin-hostpath
+  resources:
+    requests:
+      storage: 200Gi

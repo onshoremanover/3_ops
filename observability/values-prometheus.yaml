@@ -1,0 +1,87 @@
+---
+global:
+  scrape_interval: 60s   # Reduce from 15s to 30s to save CPU
+  scrape_timeout: 15s    # Keep scrape timeout at 15s
+
+prometheus:
+  prometheusSpec:
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 100m
+      limits:
+        memory: 512Mi
+        cpu: 200m
+    retention: 5d             # Reduce retention to 5 days
+    retentionSize: 5GB        # Cap retention size to prevent overflow
+    enableAdminAPI: false     # Disable admin API to prevent unintended changes
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 5Gi    # Reduce storage to 5Gi
+
+grafana:
+  enabled: true
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 100m
+  persistence:
+    enabled: true
+    size: 2Gi                 # Keep a small PVC for dashboards
+  securityContext:
+    runAsUser: 472
+    runAsGroup: 472
+    fsGroup: 472
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 50m
+      limits:
+        memory: 256Mi
+        cpu: 100m
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 2Gi
+
+promtail:
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 128Mi
+      cpu: 100m
+  config:
+    clients:
+      - url: http://loki:3100/loki/api/v1/push
+    positions:
+      filename: /var/log/positions.yaml
+    scrape_configs:
+      - job_name: varlogs
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: varlogs
+              __path__: /var/log/**/*.log
+      - job_name: containerlogs
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: containerlogs
+              __path__: /var/lib/docker/containers/*/*.log
+
+

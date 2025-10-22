@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lukas-site
+  namespace: lukaspellegrinicom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lukas-site
+  template:
+    metadata:
+      labels:
+        app: lukas-site
+    spec:
+      imagePullSecrets:
+        - name: harbor-creds
+      containers:
+        - name: web
+          image: harbor.publio.online/lukaspellegrinicom/site:0.1.1
+          ports:
+            - containerPort: 80
+          resources:               # you said you always declare resources
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20

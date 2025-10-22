@@ -1,0 +1,19 @@
+# immich-importer.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: immich-importer
+  namespace: immich
+spec:
+  containers:
+  - name: importer
+    image: node:18
+    command: ["/bin/bash", "-c", "sleep infinity"]
+    volumeMounts:
+    - name: immich-library
+      mountPath: /import
+  volumes:
+  - name: immich-library
+    persistentVolumeClaim:
+      claimName: immich-library-pvc
+  restartPolicy: Never

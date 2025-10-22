@@ -1,0 +1,47 @@
+image:
+  repository: linuxserver/jellyfin
+  tag: 10.10.6
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+
+podSecurityContext:
+  fsGroup: 65534
+
+service:
+  type: ClusterIP
+  port: 8096
+
+persistence:
+  config:
+    enabled: true
+    storageClass: microk8s-hostpath
+    accessMode: ReadWriteOnce
+    size: 5Gi
+
+  cache:
+    enabled: true
+    storageClass: microk8s-hostpath
+    accessMode: ReadWriteOnce
+    size: 2Gi
+
+  media:
+    enabled: true
+    mountPath: /media
+    existingClaim: jellyfin-media
+
+  transcode:
+    enabled: true
+    existingClaim: jellyfin-transcode
+
+runtimeClassName: ""
+
+extraVolumes:
+  - name: transcode
+    persistentVolumeClaim:
+      claimName: jellyfin-transcode
+
+extraVolumeMounts:
+  - name: transcode
+    mountPath: /transcode

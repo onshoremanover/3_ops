@@ -1,0 +1,5 @@
+#/bin/bash
+
+helm upgrade dagster dagster/dagster \
+  --namespace dagster \
+  -f values.yaml

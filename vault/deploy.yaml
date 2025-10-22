@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+  namespace: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: vaultwarden
+          image: vaultwarden/server:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: vaultwarden-config
+          env:
+            - name: ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vaultwarden-secret
+                  key: ADMIN_TOKEN
+            # If you populated SMTP_* in the secret, uncomment these:
+            # - name: SMTP_HOST
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_HOST}}
+            # - name: SMTP_FROM
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_FROM}}
+            # - name: SMTP_USERNAME
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_USERNAME}}
+            # - name: SMTP_PASSWORD
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_PASSWORD}}
+            # - name: SMTP_PORT
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_PORT}}
+            # - name: SMTP_SECURITY
+            #   valueFrom: {secretKeyRef: {name: vaultwarden-secret, key: SMTP_SECURITY}}
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /alive
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /alive
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 6
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: vaultwarden-data

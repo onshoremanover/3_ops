@@ -1,0 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-nextcloud-retain
+  annotations:
+    meta.helm.sh/release-name: nfs-provisioner
+    meta.helm.sh/release-namespace: nfs-storage
+  labels:
+    app: nfs-subdir-external-provisioner
+    app.kubernetes.io/managed-by: Helm
+    chart: nfs-subdir-external-provisioner-4.0.18
+    heritage: Helm
+    release: nfs-provisioner
+provisioner: cluster.local/nfs-provisioner-nfs-subdir-external-provisioner
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+  archiveOnDelete: "true"

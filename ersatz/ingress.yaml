@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ersatz
+  namespace: ersatz
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: public
+  rules:
+  - host: ersatz.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ersatz
+            port:
+              number: 8409
+  tls:
+  - hosts:
+    - ersatz.publio.online
+    secretName: ersatz-tls

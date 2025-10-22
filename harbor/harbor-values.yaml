@@ -1,0 +1,52 @@
+expose:
+  type: ingress
+  ingress:
+    ingressClassName: public
+    hosts:
+      core: harbor.publio.online
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  tls:
+    certSource: "ingress"
+    secretName: "harbor-tls"
+
+externalURL: "https://harbor.publio.online"
+
+# also set a global default the chart can fall back to
+global:
+  storageClass: ssd-hostpath-harbor
+
+persistence:
+  enabled: true
+  resourcePolicy: "keep"
+  persistentVolumeClaim:
+    registry:
+      storageClass: "ssd-hostpath-harbor"
+      size: 50Gi
+    database:
+      storageClass: "ssd-hostpath-harbor"
+      size: 10Gi
+    jobservice:                    # <<< THIS is the key the PVC template uses
+      storageClass: "ssd-hostpath-harbor"
+      size: 5Gi
+    trivy:
+      storageClass: "ssd-hostpath-harbor"
+      size: 20Gi
+    redis:
+      storageClass: "ssd-hostpath-harbor"
+      size: 2Gi
+
+harborAdminPassword: "MySecurePassword"
+
+notary:
+  enabled: true
+  server:
+    service:
+      type: ClusterIP
+  signer:
+    image:
+      repository: goharbor/notary-signer
+  server:
+    image:
+      repository: goharbor/notary-server

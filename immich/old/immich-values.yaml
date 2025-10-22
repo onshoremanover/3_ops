@@ -1,0 +1,39 @@
+image:
+  tag: v1.132.3
+
+env:
+  DB_HOSTNAME: immich-postgresql.immich.svc.cluster.local
+  DB_PORT: "5432"
+  DB_USERNAME: immich
+  DB_PASSWORD: immichpassword
+  DB_DATABASE_NAME: immich
+  DB_SSL: "false"
+  REDIS_HOSTNAME: immich-redis-master
+  IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
+
+immich:
+  persistence:
+    library:
+      existingClaim: immich-library-pvc
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+server:
+  enabled: true
+
+microservices:
+  enabled: true
+
+machine-learning:
+  enabled: true
+  env:
+    TRANSFORMERS_CACHE: /cache
+  persistence:
+    cache:
+      enabled: true
+      size: 10Gi
+      type: emptyDir

@@ -1,0 +1,23 @@
+# Exclude log files
+logs/
+*.log
+
+# Exclude mail directories
+mail/
+
+# Exclude system configurations
+etc/
+
+# Exclude database backups (if not needed inside the image)
+db/
+
+# Exclude Docker-related files
+Dockerfile
+.dockerignore
+
+# Exclude version control directories
+.git/
+.gitignore
+
+# Exclude any other unnecessary files or directories
+

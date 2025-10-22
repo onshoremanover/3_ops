@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: immich
+  namespace: immich
+  annotations:
+    # ➊  Let’s Encrypt
+    cert-manager.io/cluster-issuer: letsencrypt-prod   # keep your issuer
+
+    # ➋  Large uploads + long‑running requests
+    nginx.ingress.kubernetes.io/proxy-body-size: "2g"          # 2 GB  [oai_citation:0‡SUSE](https://www.suse.com/support/kb/doc/?id=000021309&utm_source=chatgpt.com)
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"      # 10 min
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off" # stream straight to Immich  [oai_citation:1‡Stack Overflow](https://stackoverflow.com/questions/76110804/setting-proxy-request-buffering-off-leads-to-removing-original-content-length?utm_source=chatgpt.com)
+
+    # ➌  Preserve Immich mobile discovery even if LE also owns /.well‑known/*
+    nginx.ingress.kubernetes.io/server-snippet: |              # snippet feature  [oai_citation:2‡NGINX Docs](https://docs.nginx.com/nginx-ingress-controller/configuration/ingress-resources/advanced-configuration-with-snippets/?utm_source=chatgpt.com)
+      location = /.well-known/immich {
+        proxy_pass http://immich-server:2283;
+      }
+spec:
+  ingressClassName: public        # same controller you already use
+  tls:
+  - hosts:
+    - immich.publio.online
+    secretName: immich-tls         # cert-manager fills this
+  rules:
+  - host: immich.publio.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: immich-server
+            port:
+              number: 2283

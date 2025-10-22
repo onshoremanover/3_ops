@@ -1,0 +1,30 @@
+userDeployments:
+  enabled: true
+  deployments:
+    - name: my-assets
+      image:
+        repository: harbor.publio.online/dagster/dagster-user-code
+        tag: latest
+      dagsterApiGrpcArgs:
+        - "-m"
+        - "my_dagster_project"
+      codeServer:
+        port: 3030
+
+ingress:
+  enabled: true
+  ingressClassName: public
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.publio.online;";
+      add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
+  hosts:
+    - host: dagster.publio.online
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: dagster-tls
+      hosts:
+        - dagster.publio.online

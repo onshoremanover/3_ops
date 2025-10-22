@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: asterisk
+  namespace: phone
+spec:
+  type: NodePort
+  selector:
+    app: asterisk
+  ports:
+  - name: sip
+    port: 5060
+    targetPort: 5060
+    protocol: UDP
+    nodePort: 30561  # Will map to external port 30560

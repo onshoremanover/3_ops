@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microk8s-console
+  namespace: minio-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microk8s-console
+  template:
+    metadata:
+      labels:
+        app: microk8s-console
+    spec:
+      containers:
+      - name: console
+        image: quay.io/minio/console:v0.29.0
+        ports:
+        - containerPort: 9090
+        env:
+        - name: CONSOLE_MINIO_SERVER
+          value: "https://minio.publio.online" # your S3 endpoint
+        - name: CONSOLE_MINIO_BROWSER_REDIRECT_URI
+          value: "https://minio.publio.online/console"
+        - name: CONSOLE_SECURE_TLS_REDIRECT
+          value: "off"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microk8s-console
+  namespace: minio-operator
+spec:
+  selector:
+    app: microk8s-console
+  ports:
+  - port: 9090
+    targetPort: 9090
+    protocol: TCP
+

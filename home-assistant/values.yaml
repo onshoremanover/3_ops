@@ -1,0 +1,26 @@
+image:
+  repository: ghcr.io/home-assistant/home-assistant
+  tag: "2024.6"  # Or latest version
+
+persistence:
+  enabled: true
+  size: 5Gi
+  storageClass: standard  # Change to your storage class
+
+service:
+  type: ClusterIP
+  port: 8123
+
+ingress:
+  enabled: false  # Disable built-in ingress to use your own
+
+hostNetwork: false
+dnsPolicy: ClusterFirst
+
+resources:
+  limits:
+    memory: 512Mi
+    cpu: 500m
+  requests:
+    memory: 256Mi
+    cpu: 250m

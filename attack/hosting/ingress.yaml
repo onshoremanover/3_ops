@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: attack-ingress
+  namespace: attack
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.publio.online;";
+      add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
+spec:
+  ingressClassName: public
+  rules:
+    - host: attack.publio.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fail2ban-web
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - attack.publio.online
+      secretName: attack-tls
