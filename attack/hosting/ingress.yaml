@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: attack.publio.online
+    - host: attack.peluan.com
       http:
         paths:
           - path: /
@@ -23,5 +23,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - attack.publio.online
-      secretName: attack-tls
+        - attack.peluan.com
+      secretName: peluan-wildcard-tls

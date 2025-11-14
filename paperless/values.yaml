@@ -2,15 +2,23 @@
 env:
   TZ: "Europe/Amsterdam"
 
-  PAPERLESS_ALLOWED_HOSTS: "paperless.publio.online,127.0.0.1"
-  PAPERLESS_SITE_URL: "https://paperless.publio.online"    
+  PAPERLESS_ALLOWED_HOSTS: "paperless.peluan.com,127.0.0.1"
+  PAPERLESS_SITE_URL: "https://paperless.peluan.com"    
   PAPERLESS_ADMIN_USER: "admin"
   PAPERLESS_ADMIN_PASSWORD: "hiphonei32"
+
+global:
+  security:
+    allowInsecureImages: true
 
 image:
   repository: ghcr.io/paperless-ngx/paperless-ngx
   tag: "2.18.2"
   pullPolicy: IfNotPresent    
+
+podSecurityContext:
+  fsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
 
 # Use built-in PostgreSQL (or set both to false/use an external DB)
 postgresql:
@@ -18,41 +26,44 @@ postgresql:
   postgresqlDatabase: paperless
   postgresqlUsername: paperless
   postgresqlPassword: YOUR_STRONG_PASSWORD
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: "16.4.0-debian-12-r11"
   primary:
     persistence:
       enabled: true
-      storageClass: ssd-hostpath-paperless
-      size: 40Gi
+      existingClaim: paperless-pgdata
 
 mariadb:
   enabled: false
 
 redis:
   enabled: true
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/redis
+    tag: "7.2.5-debian-12-r4"
 
 persistence:
   data:
     enabled: true
-    storageClass: ssd-hostpath-paperless
-    size: 20Gi
+    existingClaim: paperless-data
     accessMode: ReadWriteMany
 
   media:
     enabled: true
-    storageClass: ssd-hostpath-paperless 
-    size: 50Gi
+    existingClaim: paperless-media
     accessMode: ReadWriteMany
 
   consume:
     enabled: true
-    storageClass: ssd-hostpath-paperless
-    size: 5Gi
+    existingClaim: paperless-consume
     accessMode: ReadWriteOnce
 
   export:
     enabled: true
-    storageClass: ssd-hostpath-paperless
-    size: 5Gi
+    existingClaim: paperless-export
     accessMode: ReadWriteOnce
 
 ingress:
@@ -60,13 +71,14 @@ ingress:
     enabled: true
     ingressClassName: public
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/cluster-issuer: letsencrypt-cf
     hosts:
-      - host: paperless.publio.online
+      - host: paperless.peluan.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - hosts:
-          - paperless.publio.online
+          - paperless.peluan.com
         secretName: paperless-tls
+

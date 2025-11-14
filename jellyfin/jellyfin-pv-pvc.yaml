@@ -1,0 +1,94 @@
+# CONFIG
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-jellyfin-config
+spec:
+  capacity: { storage: 10Gi }
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: microk8s-hostpath
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/jellyfin-config
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config
+  namespace: jellyfin
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 10Gi } }
+  storageClassName: microk8s-hostpath
+  volumeName: pv-jellyfin-config
+
+# MEDIA
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-jellyfin-media
+spec:
+  capacity: { storage: 2000Gi } # adjust if you want
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: microk8s-hostpath
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/jellyfin-media
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-media
+  namespace: jellyfin
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 2000Gi } }
+  storageClassName: microk8s-hostpath
+  volumeName: pv-jellyfin-media
+
+# TRANSCODE (scratch)
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-jellyfin-transcode
+spec:
+  capacity: { storage: 20Gi }
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: microk8s-hostpath
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/jellyfin-transcode
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-transcode
+  namespace: jellyfin
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 20Gi } }
+  storageClassName: microk8s-hostpath
+  volumeName: pv-jellyfin-transcode

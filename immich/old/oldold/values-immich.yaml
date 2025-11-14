@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/immich-app/immich-server
-  tag: v2.0.1    
+  tag: v1.134.0    
 
 global:
   nodeSelector:
@@ -8,8 +8,11 @@ global:
 
 defaultResources: {}
 env:
-  REDIS_HOSTNAME: immich-valkey
-  DB_URL: postgresql://immich:immichpassword@immich-postgresql:5432/immich
+  REDIS_HOSTNAME: immich-redis-master
+  DB_HOSTNAME: immich-postgresql
+  DB_USERNAME: immich
+  DB_PASSWORD: immichpassword
+  DB_DATABASE_NAME: immich
   IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
 
 defaultPodOptions:
@@ -20,7 +23,7 @@ microservices:
   immich-node: ssd
   image:
     repository: ghcr.io/immich-app/immich-server   # same image, different command
-    tag: v2.0.1
+    tag: v1.134.0
 
 immich:
   persistence:
@@ -43,8 +46,8 @@ server:
       cpu: 200m
       memory: 512Mi
     limits:
-      cpu: 2
-      memory: 10Gi
+      cpu: 1
+      memory: 1Gi
 
 machine-learning:
   immich-node: ssd

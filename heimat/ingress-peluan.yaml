@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: heimat-ingress-peluan
+  namespace: heimat
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cf
+spec:
+  ingressClassName: public
+  rules:
+  - host: heimat.peluan.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: heimat
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - heimat.peluan.com
+    secretName: heimat-tls

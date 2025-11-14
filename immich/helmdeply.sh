@@ -1,3 +1,4 @@
-helm upgrade --install immich immich/immich -n immich -f values-immich.yaml
+helm upgrade --install immich oci://ghcr.io/immich-app/immich-charts/immich \
+  -n immich -f values-immich.yaml
 
 

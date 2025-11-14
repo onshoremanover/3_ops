@@ -3,15 +3,21 @@ expose:
   ingress:
     ingressClassName: public
     hosts:
-      core: harbor.publio.online
+      core: harbor.peluan.com
     annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "2g"  
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+      nginx.ingress.kubernetes.io/proxy-buffering: "off"
+      nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
   tls:
     certSource: "ingress"
-    secretName: "harbor-tls"
+    secretName: "peluan-wildcard-tls"
 
-externalURL: "https://harbor.publio.online"
+externalURL: "https://harbor.peluan.com"
 
 # also set a global default the chart can fall back to
 global:

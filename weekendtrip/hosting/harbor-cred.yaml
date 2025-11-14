@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJoYXJib3IucGVsdWFuLmNvbSI6eyJ1c2VybmFtZSI6InJvYm90JGdlbmVyYWwtcm9ib3QiLCJwYXNzd29yZCI6Ikw5UjlsYjd2aGdhZW54MGZHclBpRzB4V2JMTEFCZUNnIiwiZW1haWwiOiJsdWthcy5hLnBlbGxlZ3JpbmlAZ21haWwuY29tIiwiYXV0aCI6ImNtOWliM1FrWjJWdVpYSmhiQzF5YjJKdmREcE1PVkk1YkdJM2RtaG5ZV1Z1ZURCbVIzSlFhVWN3ZUZkaVRFeEJRbVZEWnc9PSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: harbor-cred
+  namespace: weekendtrip
+type: kubernetes.io/dockerconfigjson

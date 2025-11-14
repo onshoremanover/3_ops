@@ -1,82 +1,52 @@
-image:
-  repository: ghcr.io/immich-app/immich-server
-  tag: v2.0.1    
-
-postgresql:
-  enabled: false
-
-global:
-  nodeSelector:
-    immich-home: "true"
-
-defaultResources: {}
-env:
-  REDIS_HOSTNAME: immich-redis-master
-  DB_HOSTNAME: immich-postgresql
-  DB_USERNAME: immich
-  DB_PASSWORD: immichpassword
-  DB_DATABASE_NAME: immich
-  IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
-
-defaultPodOptions:
-  runtimeClassName: runc  
-  resources: {}   
-
-microservices:
-  immich-node: ssd
-  image:
-    repository: ghcr.io/immich-app/immich-server   # same image, different command
-    tag: v2.0.1
-
-redis:
-  enabled: true
-  persistence:
-    enabled: true
-    storageClass: ssd-hostpath-immich
-    size: 2Gi
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          tag: v2.0.1
 
 immich:
-  persistence:
-    library:
-      existingClaim: immich-library-pvc
   metrics:
     enabled: false
-
-runtimeClassName: runc        # tell the chart to use the plain runc RuntimeClass
-
+  persistence:
+    library:
+      existingClaim: immich-library-pvc 
 
 server:
   enabled: true
-  immich-node: ssd
+  controllers:
+    main:
+      containers:
+        main:
+          image:
+            repository: ghcr.io/immich-app/immich-server
+            # tag inherited from controllers.main.containers.main.image.tag (v2.0.1)
+          env:
+            DB_URL: postgresql://immich:immichpassword@immich-postgresql:5432/immich
+            REDIS_HOSTNAME: immich-valkey
+            IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
   ingress:
     main:
       enabled: false
-  resources:                  # sane CPU‑only defaults
-    requests:
-      cpu: 200m
-      memory: 512Mi
-    limits:
-      cpu: 2
-      memory: 10Gi
+  # (resources are fine to keep if you like; omitted here for brevity)
+
+valkey:
+  enabled: false   # you already run immich-valkey
 
 machine-learning:
-  immich-node: ssd
-  runtimeClassName: "runc"        # tell the chart to use the plain runc RuntimeClass
   enabled: true
-  image:
-    repository: ghcr.io/immich-app/immich-machine-learning
-    pullPolicy: IfNotPresent
-  env:
-    TRANSFORMERS_CACHE: /cache
+  controllers:
+    main:
+      containers:
+        main:
+          image:
+            repository: ghcr.io/immich-app/immich-machine-learning
+            pullPolicy: IfNotPresent
+          env:
+            TRANSFORMERS_CACHE: /cache
   persistence:
     cache:
       enabled: true
-      size: 10Gi
       type: emptyDir
-  resources:
-    requests:
-      cpu: 500m
-      memory: 2Gi
-    limits:
-      cpu: 2
-      memory: 4Gi
+      size: 10Gi
+

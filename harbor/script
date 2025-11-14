@@ -1,0 +1,4 @@
+helm upgrade --install harbor \
+  harbor/harbor \
+  -n harbor \
+  -f harbor-values.yaml

@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: splunkquiz
-          image: harbor.publio.online/splunk/splunkquiz:latest
+          image: harbor.peluan.com/splunkquiz/app:1.0
           ports:
             - containerPort: 5000
       imagePullSecrets:
-        - name: harbor-creds
+        - name: harbor-cred
 

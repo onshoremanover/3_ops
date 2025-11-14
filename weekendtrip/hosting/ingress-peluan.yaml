@@ -1,29 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vaultwarden-ingress
-  namespace: vault
+  name: weekendtrip-ingress-peluan
+  namespace: weekendtrip
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/configuration-snippet: |
       add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.peluan.com;";
       add_header Set-Cookie "umami-tracking=1; Path=/; Secure; HttpOnly";
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
   ingressClassName: public
   rules:
-  - host: vault.peluan.com
+  - host: weekendtrip.peluan.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: vaultwarden          # 👈 Service name from the earlier manifest
+            name: weekendtrip-svc
             port:
-              number: 80               # 👈 Vaultwarden listens on 80
+              number: 80
   tls:
   - hosts:
-    - vault.peluan.com
+    - weekendtrip.peluan.com
     secretName: peluan-wildcard-tls

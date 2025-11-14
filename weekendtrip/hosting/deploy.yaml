@@ -24,7 +24,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: app
-          image: harbor.publio.online/weekendtrip/app:1.1
+          image: harbor.peluan.com/weekendtrip/app:1.2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

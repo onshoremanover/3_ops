@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: velo
-        image: harbor.publio.online/velo/velotest:latest
+        image: harbor.peluan.com/velo/app:1.0
         ports:
         - containerPort: 8501
         resources:
@@ -28,5 +28,5 @@ spec:
             memory: "512Mi"
             cpu: "1000m"
       imagePullSecrets:
-      - name: harbor-creds
+      - name: harbor-cred
 

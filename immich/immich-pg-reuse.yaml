@@ -1,0 +1,39 @@
+# PV: reuse your exact host path
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-postgresql-pv-reuse
+spec:
+  capacity:
+    storage: 20Gi              # >= the size you expect, can be larger
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""         # IMPORTANT: static PV (no dynamic provisioner)
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/immich/immich-postgres-data
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - think
+
+---
+# PVC: the claim your Postgres pod will mount
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-postgresql-data-reuse
+  namespace: immich
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: ""  
+  volumeName: immich-postgresql-pv-reuse

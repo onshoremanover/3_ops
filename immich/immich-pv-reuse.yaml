@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-library-pv-reuse
+  namespace: immich
+spec:
+  capacity:
+    storage: 500Gi          # any number ≥ your data size; not enforced for hostPath
+  accessModes:
+    - ReadWriteMany         # single node, but OK for hostPath
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""      # bind by explicit volumeName
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/immich/immich-library

@@ -3,6 +3,14 @@ image:
   tag: 10.10.6
   pullPolicy: IfNotPresent
 
+env:
+  - name: PUID
+    value: "911"
+  - name: PGID
+    value: "911"
+  - name: UMASK
+    value: "002"
+
 ingress:
   enabled: false
 
@@ -16,8 +24,7 @@ service:
 persistence:
   config:
     enabled: true
-    storageClass: microk8s-hostpath
-    accessMode: ReadWriteOnce
+    existingClaim: jellyfin-config
     size: 5Gi
 
   cache:
@@ -35,13 +42,3 @@ persistence:
     enabled: true
     existingClaim: jellyfin-transcode
 
-runtimeClassName: ""
-
-extraVolumes:
-  - name: transcode
-    persistentVolumeClaim:
-      claimName: jellyfin-transcode
-
-extraVolumeMounts:
-  - name: transcode
-    mountPath: /transcode

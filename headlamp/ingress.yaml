@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: headlamp.publio.online
+    - host: headlamp.peluan.com
       http:
         paths:
           - path: /
@@ -24,5 +24,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - headlamp.publio.online
-      secretName: headlamp-tls
+        - headlamp.peluan.com
+      secretName: peluan-wildcard-tls

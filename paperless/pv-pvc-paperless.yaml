@@ -1,0 +1,158 @@
+# --- DATA (RWX) ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-paperless-data
+spec:
+  capacity: { storage: 20Gi }
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: ssd-hostpath-paperless
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/paperless/paperless-paperless-ngx-data-pvc-a9dc592b-14ef-4c8b-8806-ddc057a4f130
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]   # <- set this
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: paperless-data
+  namespace: paperless
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  resources: { requests: { storage: 20Gi } }
+  storageClassName: ssd-hostpath-paperless
+  volumeName: pv-paperless-data
+
+# --- MEDIA (RWX) ---
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-paperless-media
+spec:
+  capacity: { storage: 50Gi }
+  accessModes: [ "ReadWriteMany" ]
+  storageClassName: ssd-hostpath-paperless
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/paperless/paperless-paperless-ngx-media-pvc-6b7f488f-0d9d-4ba3-bbe4-7a9ecc49d8e4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: paperless-media
+  namespace: paperless
+spec:
+  accessModes: [ "ReadWriteMany" ]
+  resources: { requests: { storage: 50Gi } }
+  storageClassName: ssd-hostpath-paperless
+  volumeName: pv-paperless-media
+
+# --- CONSUME (RWO) ---
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-paperless-consume
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: ssd-hostpath-paperless
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/paperless/paperless-paperless-ngx-consume-pvc-df045aeb-db33-44af-9ef3-58ffa32b87da
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: paperless-consume
+  namespace: paperless
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ssd-hostpath-paperless
+  volumeName: pv-paperless-consume
+
+# --- EXPORT (RWO) ---
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-paperless-export
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: ssd-hostpath-paperless
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/paperless/paperless-paperless-ngx-export-pvc-9f0851f1-8b1f-426b-9355-e6bd5aa41394
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: paperless-export
+  namespace: paperless
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ssd-hostpath-paperless
+  volumeName: pv-paperless-export
+
+# --- POSTGRES DATA (RWO) ---
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-paperless-pgdata
+spec:
+  capacity: { storage: 40Gi }
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: ssd-hostpath-paperless
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/paperless/paperless-data-paperless-ngx-postgresql-0-pvc-1984d8b9-0b3f-49e5-8575-833647b0fd4f
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: [ think ]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: paperless-pgdata
+  namespace: paperless
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources: { requests: { storage: 40Gi } }
+  storageClassName: ssd-hostpath-paperless
+  volumeName: pv-paperless-pgdata
