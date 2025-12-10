@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keda-http-proxy
+  namespace: oceanrace
+spec:
+  type: ExternalName
+  externalName: keda-add-ons-http-interceptor-proxy.keda.svc.cluster.local

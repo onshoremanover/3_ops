@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tar1090
+  namespace: radar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tar1090
+  template:
+    metadata:
+      labels:
+        app: tar1090
+    spec:
+      containers:
+      - name: tar1090
+        image: ghcr.io/sdr-enthusiasts/docker-tar1090:latest
+        env:
+        - name: BEASTHOST
+          value: "readsb.radar.svc.cluster.local"
+        - name: BEASTPORT
+          value: "30005"
+        - name: TZ
+          value: "Europe/Amsterdam"
+        ports:
+        - containerPort: 80
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tar1090
+  namespace: radar
+spec:
+  selector:
+    app: tar1090
+  ports:
+  - name: http
+    port: 80
+    targetPort: http

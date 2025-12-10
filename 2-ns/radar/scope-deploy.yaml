@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adsb-radarscope
+  namespace: radar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adsb-radarscope
+  template:
+    metadata:
+      labels:
+        app: adsb-radarscope
+    spec:
+      containers:
+      - name: adsb-radarscope
+        image: localhost:32000/radar:1.0
+        ports:
+        - containerPort: 80
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adsb-radarscope
+  namespace: radar
+spec:
+  selector:
+    app: adsb-radarscope
+  ports:
+  - name: http
+    port: 80
+    targetPort: http

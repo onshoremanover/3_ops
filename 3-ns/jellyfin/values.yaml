@@ -10,6 +10,8 @@ env:
     value: "911"
   - name: UMASK
     value: "002"
+  - name: JELLYFIN_TRICKPLAYENABLED
+    value: "false"
 
 ingress:
   enabled: false

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oceanrace
+  namespace: oceanrace
+  labels:
+    app: oceanrace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oceanrace
+  template:
+    metadata:
+      labels:
+        app: oceanrace
+    spec:
+      containers:
+        - name: oceanrace-map
+          image: harbor.peluan.com/oceanrace/app:1.0
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: harbor-cred
+

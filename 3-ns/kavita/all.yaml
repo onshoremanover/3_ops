@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kavita
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kavita-pv
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: kavita-hostpath
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/data/zweiterra/microk8s-storage/kativa
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kavita-pvc
+  namespace: kavita
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: kavita-hostpath
+  resources:
+    requests:
+      storage: 200Gi
+  volumeName: kavita-pv
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+  namespace: kavita
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kavita
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      containers:
+        - name: kavita
+          image: lscr.io/linuxserver/kavita:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+              name: http
+          env:
+            - name: PUID
+              value: "1000"          # change if your user has a different UID
+            - name: PGID
+              value: "1000"          # change if your user has a different GID
+            - name: TZ
+              value: "Europe/Zurich"
+          volumeMounts:
+            - name: kavita-storage
+              mountPath: /config
+              subPath: config
+            - name: kavita-storage
+              mountPath: /data
+              subPath: data
+      volumes:
+        - name: kavita-storage
+          persistentVolumeClaim:
+            claimName: kavita-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kavita
+  namespace: kavita
+spec:
+  selector:
+    app: kavita
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
+---
+# Optional Ingress – adjust host to your domain
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kavita
+  namespace: kavita
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cf
+spec:
+  rules:
+    - host: kavita.peluan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  number: 5000
+  tls:
+    - hosts:
+        - kavita.peluan.com
+      secretName: kavita-tls

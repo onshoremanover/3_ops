@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: asterisk
-        image: andrius/asterisk:latest
+        image: andrius/asterisk:18.26.4_debian-trixie
         ports:
         - containerPort: 5060 # SIP UDP
           protocol: UDP

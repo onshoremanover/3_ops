@@ -1,0 +1,10 @@
+/* static/style.css */
+#map {
+  height: 100vh; /* Full screen height */
+}
+
+.boat-popup img {
+  width: 20px;
+  height: 14px;
+}
+

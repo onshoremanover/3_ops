@@ -1,0 +1,132 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: asterisk-config
+  namespace: phone
+data:
+  pjsip.conf: |
+    [transport-udp]
+    type=transport
+    protocol=udp
+    bind=0.0.0.0:5060
+
+    ; ===== homephone =====
+    [homephone]
+    type=aor
+    max_contacts=1
+    remove_existing=yes
+
+    [homephone]
+    type=auth
+    auth_type=userpass
+    password=1234
+    username=homephone
+
+    [homephone]
+    type=endpoint
+    transport=transport-udp
+    context=default
+    disallow=all
+    allow=ulaw
+    auth=homephone
+    aors=homephone
+    direct_media=no
+
+    ; ===== myphone =====
+    [myphone]
+    type=aor
+    max_contacts=1
+    remove_existing=yes
+
+    [myphone]
+    type=auth
+    auth_type=userpass
+    password=1312
+    username=myphone
+
+    [myphone]
+    type=endpoint
+    transport=transport-udp
+    context=default
+    disallow=all
+    allow=ulaw
+    auth=myphone
+    aors=myphone
+    direct_media=no
+
+    ; ===== wifephone =====
+    [wifephone]
+    type=aor
+    max_contacts=1
+    remove_existing=yes
+
+    [wifephone]
+    type=auth
+    auth_type=userpass
+    password=8765
+    username=wifephone
+
+    [wifephone]
+    type=endpoint
+    transport=transport-udp
+    context=default
+    disallow=all
+    allow=ulaw
+    auth=wifephone
+    aors=wifephone
+    direct_media=no
+
+    ; ===== wurmac =====
+    [wurmac]
+    type=aor
+    max_contacts=1
+    remove_existing=yes
+
+    [wurmac]
+    type=auth
+    auth_type=userpass
+    password=1312
+    username=wurmac
+
+    [wurmac]
+    type=endpoint
+    transport=transport-udp
+    context=default
+    disallow=all
+    allow=ulaw
+    auth=wurmac
+    aors=wurmac
+    direct_media=no
+
+    ; ===== lumac =====
+    [lumac]
+    type=aor
+    max_contacts=1
+
+    [lumac]
+    type=auth
+    auth_type=userpass
+    password=1312
+    username=lumac
+
+    [lumac]
+    type=endpoint
+    transport=transport-udp
+    context=default
+    disallow=all
+    allow=ulaw
+    auth=lumac
+    aors=lumac
+    direct_media=no
+
+  extensions.conf: |
+    [default]
+    exten => 1000,1,Dial(PJSIP/homephone)
+    exten => 1001,1,Dial(PJSIP/myphone)
+    exten => 1002,1,Dial(PJSIP/wifephone)
+    exten => 1003,1,Dial(PJSIP/wurmac)
+    exten => 1004,1,Dial(PJSIP/lumac)
+
+  modules.conf: |
+    [modules]
+    autoload=yes

@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readsb
+  namespace: radar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readsb
+  template:
+    metadata:
+      labels:
+        app: readsb
+    spec:
+      containers:
+      - name: readsb
+        image: mikenye/readsb:latest
+        env:
+        - name: TZ
+          value: "Europe/Amsterdam"
+        securityContext:
+          privileged: true   # needed to access /dev/bus/usb
+        args:
+          - "--net"
+          - "--device-type=rtlsdr"
+          - "--write-json=/var/lib/readsb"
+          - "--forward-mlat"
+          - "--net-bo-port"
+          - "30005"  
+        ports:
+        - containerPort: 8080   # readsb web interface
+          name: http
+        - containerPort: 30005  # Beast data output
+          name: beast
+        volumeMounts:
+        - name: usb
+          mountPath: /dev/bus/usb
+      volumes:
+      - name: usb
+        hostPath:
+          path: /dev/bus/usb
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: readsb
+  namespace: radar
+spec:
+  selector:
+    app: readsb
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: beast
+    port: 30005
+    targetPort: beast

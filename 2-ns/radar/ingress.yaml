@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tar1090-ing
+  namespace: radar
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cf
+spec:
+  ingressClassName: public
+  rules:
+  - host: radar.peluan.com
+    http:
+      paths:
+      # retro scope UI
+      - path: /scope
+        pathType: Prefix
+        backend:
+          service:
+            name: adsb-radarscope
+            port:
+              number: 80
+      # tar1090 main UI
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tar1090
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - radar.peluan.com
+    secretName: radar-tls

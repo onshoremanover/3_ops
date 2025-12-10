@@ -1,0 +1,23 @@
+apiVersion: http.keda.sh/v1alpha1
+kind: HTTPScaledObject
+metadata:
+  name: oceanrace-http
+  namespace: oceanrace
+spec:
+  hosts:
+    - oceanrace.peluan.com
+  pathPrefixes:
+    - /
+  scaleTargetRef:
+    name: oceanrace              # your Deployment
+    kind: Deployment
+    apiVersion: apps/v1
+    service: oceanrace-service   # the Service that fronts the app
+    port: 80
+  replicas:
+    min: 0
+    max: 5
+  scaledownPeriod: 600           # wait 10m before scaling back to 0
+  scalingMetric:
+    concurrency:
+      targetValue: 50            # tune as you like

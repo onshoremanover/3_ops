@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: semotop
+  namespace: semotop
+  labels:
+    app: semotop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: semotop
+  template:
+    metadata:
+      labels:
+        app: semotop
+    spec:
+      containers:
+        - name: semotop-map
+          image: localhost:32000/semotop:1.1
+          ports:
+            - containerPort: 80
+

@@ -1,0 +1,63 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Small info / future-controls sidebar */
+#sidebar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    max-width: 260px;
+    font-size: 13px;
+}
+
+#sidebar h1 {
+    font-size: 15px;
+    margin: 0 0 6px 0;
+}
+
+#sidebar .hint {
+    color: #555;
+    font-size: 12px;
+}
+
+.layer-control {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.layer-control label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.layer-control input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.layer-control span {
+    font-size: 13px;
+    color: #333;
+}

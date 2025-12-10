@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: semotop-ing
+  namespace: semotop
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cf
+spec:
+  ingressClassName: public
+  rules:
+  - host: map.peluan.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: semotop-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - map.peluan.com
+    secretName: map-tls
